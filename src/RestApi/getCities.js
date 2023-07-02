@@ -10,6 +10,7 @@ export const getCities = () => {
           const cityCodes = response.data.map(city => city.CityCode);
           // Call API for weather information
           getWeatherData(cityCodes);
+          return cityCodes;
           
         } else if (response.status === 304) {
           // Use cached data
