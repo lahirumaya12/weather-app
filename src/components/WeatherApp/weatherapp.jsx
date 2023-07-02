@@ -5,8 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloud, faCloudArrowDown, faCloudArrowUp, faCloudMeatball, faCloudMoon, faCloudRain, faCloudShowersHeavy, faCloudShowersWater, faCloudSun, faLocationArrow } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { getWeatherData } from '../../RestApi/apiClient';
+import {getCities} from '../../RestApi/getCities';
 
-const API_KEY = '2c064df813f6191a28d9928284677cd7';
+const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
+
 const CACHE_EXPIRATION = 5 * 60 * 1000; // 5 minutes in milliseconds
 
 const WeatherApp = () => {
