@@ -186,7 +186,36 @@ color: white;
   border-left: none;
   border-bottom: none;
   border-top: none;
-  border-right: 1px solid rgb(147, 133, 133);;
+  border-right: 1px solid rgb(96, 96, 96);;
+  margin: 6px;
+ 
+}
+
+.vl-left {
+  margin-right: 6px;
+  border-right: none;
+  border-bottom: none;
+  border-top: none;
+  border-left: 1px solid rgb(96, 96, 96);;
+ 
+}
+
+.vl-right-modal {
+  
+  border-left: none;
+  border-bottom: none;
+  border-top: none;
+  border-right: 1px solid rgb(96, 96, 96);;
+  margin: 6px;
+ 
+}
+
+.vl-left-modal {
+  margin-right: 6px;
+  border-right: none;
+  border-bottom: none;
+  border-top: none;
+  border-left: 1px solid rgb(148, 148, 148);;
  
 }
 
@@ -301,6 +330,25 @@ margin: 5%;
 
 .mn-temp{
   margin-right:100px;
+}
+
+.vl-right-modal {
+  
+  border-left: none;
+  border-bottom: none;
+  border-top: none;
+  border-right: 1px solid rgb(96, 96, 96);;
+  padding-right: 10px;
+ 
+}
+
+.vl-left-modal {
+  padding-left: 6px;
+  border-right: none;
+  border-bottom: none;
+  border-top: none;
+  border-left: 1px solid rgb(96, 96, 96);;
+ 
 }
   
 }
