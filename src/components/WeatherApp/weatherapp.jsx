@@ -5,11 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloud, faCloudArrowDown, faCloudArrowUp, faCloudMeatball, faCloudMoon, faCloudRain, faCloudShowersHeavy, faCloudShowersWater, faCloudSun, faLocationArrow } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { getWeatherData } from '../../RestApi/apiClient';
-import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import { CACHE_EXPIRATION } from '../../constants';
 
 
-const CACHE_EXPIRATION = 5 * 60 * 1000; // 5 minutes in milliseconds
 
 const WeatherApp = () => {
   

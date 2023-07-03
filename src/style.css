@@ -137,8 +137,7 @@ color: white;
 
 .modal-underback{
   background-color: #383b47;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  
 }
 .modal-degree{
   padding: 40px;
@@ -201,7 +200,6 @@ color: rgb(124, 124, 124) !important;
     background-position: center;
     width: fit-content;
   }
-  
 
 }
 
@@ -230,7 +228,7 @@ color: rgb(124, 124, 124) !important;
 
   .form-home{
     width: 390px;
-   padding-left: 40px;
+   padding-left: 50px;
   }
 
   .weather-row{
