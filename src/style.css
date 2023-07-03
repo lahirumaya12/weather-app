@@ -53,12 +53,15 @@
     text-align: left;
   padding: 20px;
   margin-left: 20px;
+  color: white;
+
   }
   
   .sun{
     text-align: right;
     padding: 20px;
     margin-right: 20px;
+    color: white;
   }
 
   .underback{
@@ -68,6 +71,7 @@
   }
   .degree{
     padding: 20px;
+    color: white;
   }
   .vertical {
     border-left: 1px solid rgb(255, 255, 255);
@@ -93,3 +97,161 @@ a:visited { text-decoration: none; }
 a:hover { text-decoration: none; }
 
 a:active { text-decoration: none; }
+
+.form{
+  color: red;
+  background-color: black;
+  opacity: 1;
+}
+
+.weather-modal {
+  background-image: url("assets/images/New.svg");
+  height: 400px;
+  background-size: cover;
+}
+
+.modal-country{
+color: white;
+  margin-top: 40px;
+
+}
+
+.country-time {
+  color: white;
+}
+
+.modal-phv{
+  text-align: left;
+  
+padding: 40px;
+margin-left: 150px;
+color: white;
+}
+
+.modal-sun{
+  text-align: right;
+  padding: 40px;
+  margin-right: 150px;
+  color: white;
+}
+
+.modal-underback{
+  background-color: #383b47;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.modal-degree{
+  padding: 40px;
+  text-align: center;
+  color: white;
+}
+
+.modal-weather-icon{
+  text-align: center;
+  color: white;
+  margin-left: 180px;
+  font-size: 18px;
+  
+}
+
+.modal-weather{
+  text-align: center;
+  color: white;
+  margin-left: 180px;
+  font-size: 15px;
+  
+  
+  
+}
+
+.temp{
+  text-align: center;
+  color: white;
+  margin-right: 180px;
+ 
+
+}
+
+.mn-temp{
+  text-align: center;
+  color: white;
+  margin-right: 180px;
+}
+
+.vl-right {
+  
+  border-left: none;
+  border-bottom: none;
+  border-top: none;
+  border-right: 1px solid rgb(147, 133, 133);;
+ 
+}
+
+.form-control-cl{
+  background-color: black !important;
+}
+
+.form-control-cl::placeholder{
+color: rgb(124, 124, 124) !important;
+}
+
+
+@media (max-width: 768px) {
+  .weather-app {
+    background-position: center;
+    width: fit-content;
+  }
+  
+
+}
+
+@media (max-width: 576px) {
+  .weather-app {
+    background-position: center;
+  }
+
+  .weather-list {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .weather-item {
+    width: 100%;
+  }
+  .weather-item {
+    width: 390px;
+    margin: 20px;
+    padding-top: 20px;
+    background-image: url("assets/images/New.svg");
+    border-radius: 10px;
+    margin-bottom: 18px;
+    color: aliceblue;
+    text-decoration: none;
+  }
+
+  .form-home{
+    width: 390px;
+   padding-left: 40px;
+  }
+
+  .weather-row{
+   width: fit-content;
+   
+  }
+
+  .weather-modal{
+  
+   
+  }
+
+  .modal-phv, .modal-degree, .modal-sun{
+    
+
+  }
+
+
+
+
+  
+
+  
+}
