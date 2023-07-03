@@ -168,13 +168,13 @@ const WeatherApp = () => {
           </div>
         <div className="underback">
         <Row >
-        <Col className="phv"> 
+        <Col className="phv">
         <p><b>Pressure</b> {weather.main.pressure}hPa</p>
         <p><b>Humidity</b> {weather.main.humidity}%</p>
         <p><b>Visibility</b> {weather.visibility}km</p></Col>
 
-        <Col className="degree">
-        <FontAwesomeIcon icon={faLocationArrow} size="2xl"/><br></br><b>{weather.wind.speed}m/s {weather.wind.deg} Degree</b>
+        <Col className="degree"><div className="vl-left"><div className="vl-right">
+        <FontAwesomeIcon icon={faLocationArrow} size="2xl"/><br></br><b>{weather.wind.speed}m/s {weather.wind.deg} Degree</b></div></div>
         </Col>
 
         <Col className="sun">
@@ -247,8 +247,8 @@ const WeatherApp = () => {
         <p><b>Visibility</b> {selectedCity.visibility}km</p>
         </Col>
 
-        <Col className="modal-degree">
-        <FontAwesomeIcon icon={faLocationArrow} size="2xl"/><br></br><b>{selectedCity.wind.speed}m/s {selectedCity.wind.deg} Degree</b>
+        <Col className="modal-degree"><div className="vl-left-modal"><div className="vl-right-modal">
+        <FontAwesomeIcon icon={faLocationArrow} size="2xl"/><br></br><b>{selectedCity.wind.speed}m/s {selectedCity.wind.deg} Degree</b></div></div>
         </Col>
 
         <Col className="modal-sun">
