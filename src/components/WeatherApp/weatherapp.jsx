@@ -6,14 +6,13 @@ import { faCloud, faCloudArrowDown, faCloudArrowUp, faCloudMeatball, faCloudMoon
 import axios from 'axios';
 import { getWeatherData } from '../../RestApi/apiClient';
 import 'reactjs-popup/dist/index.css';
-import { CACHE_EXPIRATION } from '../../constants';
+import { CACHE_EXPIRATION } from '../../constants/constants';
 
 
 
 const WeatherApp = () => {
   
   const [weatherData, setWeatherData] = useState([]);
-  const [selectedLocation, setSelectedLocation] = useState(null);
   const [selectedCity, setSelectedCity] = useState(null);
   const [showModal, setShowModal] = useState(false);
   
@@ -101,7 +100,7 @@ const WeatherApp = () => {
   return (
     <div className="weather-app">
       
-      <h1> <FontAwesomeIcon icon={faCloudSun} size='xl' style={{color: "#ffffff"}} />   Weather App</h1>
+      <h1> <FontAwesomeIcon icon={faCloudSun} size='xl' className="logo" />   Weather App</h1>
           <Container className="mt-1 mb-5">
           <Row className="justify-content-center">
             <Col sm={5}>
@@ -189,6 +188,7 @@ const WeatherApp = () => {
 
           
         ))}
+        {selectedCity && (
         <Modal
       
       size="lg"
@@ -196,13 +196,13 @@ const WeatherApp = () => {
       centered show={showModal} onHide={closeModal} className="weather-m"
     >
       <div className="weather-modal">
-      {selectedCity && (
+      
       <div>
         <h3 className="modal-country text-center">{selectedCity.name}, {selectedCity.sys.country}</h3>
         <p className="country-time text-center">{new Date(selectedCity.sys.timezone * 1000).toLocaleTimeString()}</p>
 
         <Row className="weather-row">
-        <Col>
+        <Col className="weather-col">
         <p className="modal-weather-icon">
                 {selectedCity.weather[0].id === 800 ? (
                   <FontAwesomeIcon icon={faCloudSun} size="2xl"/>
@@ -258,10 +258,11 @@ const WeatherApp = () => {
       </Row>
       </div>
       </div>
-    )}
+    
       </div>
       
     </Modal>
+    )}
       </div>
       
     </div>

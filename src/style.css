@@ -6,6 +6,10 @@
    background-image: url("assets/images/weather-cams.jpg");
    background-size: cover;
   }
+
+  .logo{
+    color: white;
+  }
   
   .weather-list {
     display: flex;
@@ -194,19 +198,49 @@ color: white;
 color: rgb(124, 124, 124) !important;
 }
 
-
-@media (max-width: 768px) {
+/* Styles for screens with maximum width 1050px */
+@media (max-width: 1050px) {
   .weather-app {
     background-position: center;
     width: fit-content;
   }
 
-}
-
-@media (max-width: 576px) {
-  .weather-app {
-    background-position: center;
+  .weather-col{
+   column-width: 10px;
+   height: 50px;
+ 
   }
+  .modal-phv{
+    margin: 5%;
+    }
+    
+    .modal-degree{
+      margin: 5px;
+    }
+    
+    .modal-sun{
+      margin: 15px;
+    }
+    
+    .modal-weather-icon{
+      margin:100px;
+    }
+    
+    .modal-weather{
+      margin:100px;
+    }
+    .temp{
+      margin-right:100px;
+    }
+    
+    .mn-temp{
+      margin-right:100px;
+    }
+
+}
+/* Styles for screens with maximum width 576px */
+@media (max-width: 576px) {
+  
 
   .weather-list {
     margin-left: 20px;
@@ -231,25 +265,42 @@ color: rgb(124, 124, 124) !important;
    padding-left: 50px;
   }
 
-  .weather-row{
-   width: fit-content;
-   
+  .weather-app {
+    background-position: center;
   }
 
   .weather-modal{
   
+   width: fit-content;
+   
    
   }
 
-  .modal-phv, .modal-degree, .modal-sun{
-    
+.modal-phv{
+margin: 5%;
+}
 
-  }
+.modal-degree{
+  margin: 5px;
+}
 
+.modal-sun{
+  margin: 15px;
+}
 
+.modal-weather-icon{
+  margin:100px;
+}
 
+.modal-weather{
+  margin:100px;
+}
+.temp{
+  margin-right:100px;
+}
 
-  
-
+.mn-temp{
+  margin-right:100px;
+}
   
 }
