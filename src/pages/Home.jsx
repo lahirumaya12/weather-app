@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import WeatherApp from '../components/WeatherApp/weatherapp'
+import WeatherApp from '../components/WeatherApp/WeatherApp'
 import Footer from '../components/Footer/footer'
 
 
