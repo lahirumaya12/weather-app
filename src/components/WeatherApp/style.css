@@ -445,7 +445,7 @@ margin: 5px;
 	}
 
 	.bold {
-		line-height: normal;
+		line-height: 180%;
 	}
 
 	.weather-item {
@@ -462,7 +462,7 @@ margin: 5px;
 		background-color: #388ee7;
 		background-repeat: no-repeat;
 		border-radius: 10px;
-		margin-bottom: 170px;
+		margin-bottom: 210px;
 		color: aliceblue;
 		text-decoration: none;
 	}
