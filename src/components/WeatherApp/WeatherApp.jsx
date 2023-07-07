@@ -145,7 +145,7 @@ const WeatherApp = () => {
 
   return (
     <div className="weather-app">
-      <h1>
+      <h1 className="app-logo">
         <img className="logo" src={logo} /> Weather App
       </h1>
       <Container className="mt-1 mb-5">

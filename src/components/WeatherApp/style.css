@@ -29,6 +29,11 @@
 
 }
 
+.app-logo{
+	font-family: 'Open Sans';
+	font-weight: 800;
+}
+
 .locationIco{
 	width: 30px;
 	padding-bottom: 10px;
