@@ -12,8 +12,8 @@ import {
   faCloudShowersHeavy,
   faCloudShowersWater,
   faCloudSun,
-  faLocationArrow,
 } from "@fortawesome/free-solid-svg-icons";
+import locationIco from "../../assets/images/location.png"
 import axios from "axios";
 import { getWeatherData } from "../../RestApi/apiClient";
 import { CACHE_EXPIRATION } from "../../constants/constants";
@@ -242,11 +242,7 @@ const WeatherApp = () => {
                   <Col className="degree">
                     <div className="vl-left">
                       <div className="vl-right">
-                        <FontAwesomeIcon
-                          icon={faLocationArrow}
-                          size="2xl"
-                          className="degree-icon"
-                        />
+                        <img src={locationIco} className="locationIco"/>
                         <div className="bold">
                           {weather.wind.speed}m/s {weather.wind.deg} Degree
                         </div>
@@ -320,11 +316,11 @@ const WeatherApp = () => {
                         </div>
                       </h2>
                       <p className="mn-temp line-height">
-                        <span className="bold">Temp Min:</span>{" "}
+                        <span className="bold">Temp Min:</span>
                         {Math.round(selectedCity.main.temp_min)}°c
                       </p>
                       <p className="mn-temp line-height">
-                        <span className="bold">Temp Max:</span>{" "}
+                        <span className="bold">Temp Max:</span>
                         {Math.round(selectedCity.main.temp_max)}°c
                       </p>
                     </div>
@@ -334,15 +330,15 @@ const WeatherApp = () => {
                   <Row>
                     <Col className="modal-phv line-height">
                       <p>
-                        <span className="bold">Pressure: </span>{" "}
+                        <span className="bold">Pressure: </span>
                         {selectedCity.main.pressure}hPa
                       </p>
                       <p>
-                        <span className="bold">Humidity: </span>{" "}
+                        <span className="bold">Humidity: </span>
                         {selectedCity.main.humidity}%
                       </p>
                       <p>
-                        <span className="bold">Visibility: </span>{" "}
+                        <span className="bold">Visibility: </span>
                         {selectedCity.visibility}km
                       </p>
                     </Col>
@@ -350,11 +346,7 @@ const WeatherApp = () => {
                     <Col className="modal-degree">
                       <div className="vl-left-modal">
                         <div className="vl-right-modal">
-                          <FontAwesomeIcon
-                            icon={faLocationArrow}
-                            size="2xl"
-                            className="degree-icon"
-                          />
+                        <img src={locationIco} className="locationIco"/>
                           <div className="bold">
                             {selectedCity.wind.speed}m/s {selectedCity.wind.deg}
                             Degree
