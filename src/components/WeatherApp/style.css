@@ -383,6 +383,15 @@ margin-left: -20%;
 /* Styles for screens with maximum width 1000px */
 @media (max-width: 1000px) {
 
+	.modal-sun {
+		text-align: right;
+		padding: 40px;
+		margin-right: 110px;
+		color: white;
+		padding-top: 4%;
+		padding-bottom: 0%;
+	}
+
 	.mm-temp {
 		padding-bottom: 2px;
 	}
@@ -395,6 +404,16 @@ margin-left: -20%;
 		padding-bottom: 0%;
 
 	}
+
+	.modal-phv {
+		text-align: left;
+		padding: 40px;
+		margin-left: 110px;
+		color: white;
+		padding-bottom: 0%;
+		padding-top: 4%;
+	}
+	
 
 	.weather-app {
 		text-align: center;
@@ -428,6 +447,8 @@ margin-left: -20%;
 		padding-top: 50px;
 		text-align: center;
 		color: white;
+		padding-top: 5%;
+		padding-bottom: 0%;
 
 	}
 
