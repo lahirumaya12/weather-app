@@ -46,7 +46,7 @@
 
 .weather-item {
 	width: 572px;
-	max-height: 214px;
+	height: 214px;
 	margin: 20px;
 	padding-top: 20px;
 	background-image: url("../../assets/images/cloud.png");
@@ -85,6 +85,7 @@ p {
 	text-align: left;
 	padding-top: 50px;
 	margin-left: 30px;
+	padding-bottom: 27px;
 	color: white;
 
 }
@@ -94,6 +95,7 @@ p {
 	padding-top: 50px;
 	margin-right: 30px;
 	color: white;
+	padding-bottom: 27px;
 }
 
 .underback {
@@ -272,7 +274,7 @@ a:active {
 }
 
 .vl-left {
-
+margin: 5px;
 	border-right: none;
 	border-bottom: none;
 	border-top: none;
@@ -372,6 +374,7 @@ a:active {
 		padding-top: 20px;
 		margin-left: 30px;
 		color: white;
+		padding-bottom: 0%;
 
 	}
 
@@ -400,6 +403,7 @@ a:active {
 		padding-top: 20px;
 		margin-right: 30px;
 		color: white;
+		padding-bottom:0%;
 	}
 
 	.modal-degree {
