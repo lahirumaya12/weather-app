@@ -17,7 +17,7 @@
 
 .weather-col {
 	padding-top: 40px;
-	margin-left: 40px;
+	
 
 }
 
@@ -112,7 +112,6 @@ p {
 .vertical {
 	border-left: 1px solid rgb(255, 255, 255);
 	height: 60px;
-
 	left: 50%;
 }
 
@@ -213,7 +212,6 @@ a:active {
 	margin-left: 180px;
 	font-size: 15px;
 
-
 }
 
 .mm-temp {
@@ -227,7 +225,6 @@ a:active {
 	font-weight: 600;
 	font-size: 64px;
 	padding-bottom: 10px;
-
 
 }
 
@@ -301,7 +298,6 @@ a:active {
 	border-top: none;
 	border-right: 1px solid rgb(104, 104, 104);
 
-
 }
 
 .vl-left-modal {
@@ -310,7 +306,6 @@ a:active {
 	border-bottom: none;
 	border-top: none;
 	border-left: 1px solid rgb(104, 104, 104);
-	;
 
 }
 
@@ -382,7 +377,6 @@ a:active {
 
 	.weather-app {
 		text-align: center;
-
 		color: white;
 		background-color: #1f2128;
 		background-image: url("../../assets/images/bg.png");
@@ -520,7 +514,6 @@ a:active {
 		border-bottom: none;
 		border-top: none;
 		border-right: 1px solid rgb(96, 96, 96);
-		;
 		padding-right: 10px;
 
 	}
@@ -531,7 +524,6 @@ a:active {
 		border-bottom: none;
 		border-top: none;
 		border-left: 1px solid rgb(96, 96, 96);
-		;
 
 	}
 

@@ -153,7 +153,6 @@ const WeatherApp = () => {
           <Col sm={5}>
             <Form className="d-flex form-home">
               <Form.Control
-                type=""
                 placeholder="Enter a city"
                 className="me-2 form-control-cl border-0"
                 aria-label=""
