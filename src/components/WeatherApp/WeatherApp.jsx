@@ -211,12 +211,12 @@ const WeatherApp = () => {
                     </p>
                   </Col>
                   <Col className="mm-temp">
-                    <p className="line-height">
-                      <span className="bold min-temp">Temp Min:</span>
+                    <p className="line-height light-font">
+                      <span className="bold min-temp">Temp Min: </span>
                       {Math.round(weather.main.temp_min)}°C
                     </p>
-                    <p className="line-height">
-                      <span className="bold">Temp Max:</span>{" "}
+                    <p className="line-height light-font">
+                      <span className="bold">Temp Max: </span>{" "}
                       {Math.round(weather.main.temp_max)}°C
                     </p>
                   </Col>
@@ -315,12 +315,12 @@ const WeatherApp = () => {
                           {Math.round(selectedCity.main.temp)}°c
                         </div>
                       </h2>
-                      <p className="mn-temp line-height">
-                        <span className="bold">Temp Min:</span>
+                      <p className="mn-temp line-height light-font">
+                        <span className="bold">Temp Min: </span>
                         {Math.round(selectedCity.main.temp_min)}°c
                       </p>
-                      <p className="mn-temp line-height">
-                        <span className="bold">Temp Max:</span>
+                      <p className="mn-temp line-height light-font">
+                        <span className="bold">Temp Max: </span>
                         {Math.round(selectedCity.main.temp_max)}°c
                       </p>
                     </div>

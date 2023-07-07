@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans');
 
 .weather-app {
 	text-align: center;
@@ -8,6 +8,7 @@
 	background-image: url("../../assets/images/bg.png");
 	background-size: contain;
 	background-repeat: no-repeat;
+	font-family: 'Open Sans';
 }
 
 .logo {
@@ -18,6 +19,13 @@
 .weather-col {
 	padding-top: 40px;
 	
+
+}
+
+.light-font{
+	font-family: 'Open Sans';
+	font-weight: 300;
+	font-size: 16px;
 
 }
 
