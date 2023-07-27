@@ -19,6 +19,7 @@ import { getWeatherData } from "../../RestApi/apiClient";
 import logo from "../../assets/images/logo.png";
 import "./../WeatherApp/style.css";
 import { cacheData , getCachedData} from "../../CacheHandler/CacheHandler";
+import WeatherCard from "../WeatherCard/WeatherCard";
 
 
 const WeatherApp = () => {
@@ -193,100 +194,8 @@ const WeatherApp = () => {
             key={getWeatherData.cityCode}
             onClick={() => handleCityClick(weather.id)}
           >
-            <div
-              className={`weather-item ${getWeatherCardClass(
-                weather.weather[0].description
-              )}`}
-              key={weather.id}
-            >
-              <div>
-                <Row>
-                  <Col>
-                    <h3 className="card-country">
-                      {weather.name}, {weather.sys.country}
-                    </h3>
-                    <p>
-                      <div className="regular-fontset">{formattedDate}</div>
-                    </p>
-                  </Col>
-                  <Col>
-                    <h2 className="temp">{Math.round(weather.main.temp)}°c</h2>
-                  </Col>
-                </Row>
-              </div>
-              <div>
-                <Row>
-                  <Col>
-                    <p className="weather">
-                      <FontAwesomeIcon
-                        icon={
-                          weatherIconMapping[weather.weather[0].id] ||
-                          faCloudSun
-                        }
-                        size="xl"
-                      />
-                      &nbsp;
-                      <span className="bold">
-                        {weather.weather[0].description}
-                      </span>
-                    </p>
-                  </Col>
-                  <Col className="mm-temp">
-                    <p className="line-height light-font">
-                      <span className="bold min-temp">Temp Min: </span>
-                      {Math.round(weather.main.temp_min)}°C
-                    </p>
-                    <p className="line-height light-font">
-                      <span className="bold">Temp Max: </span>{" "}
-                      {Math.round(weather.main.temp_max)}°C
-                    </p>
-                  </Col>
-                </Row>
-              </div>
-              <div className="underback">
-                <Row>
-                  <Col className="phv">
-                    <p className="line-height">
-                      <span className="bold">Pressure: </span>
-                      {weather.main.pressure}hPa
-                    </p>
-                    <p className="line-height">
-                      <span className="bold">Humidity: </span>
-                      {weather.main.humidity}%
-                    </p>
-                    <p className="line-height">
-                      <span className="bold">Visibility: </span>
-                      {weather.visibility}km
-                    </p>
-                  </Col>
-
-                  <Col className="degree">
-                    <div className="vl-left">
-                      <div className="vl-right">
-                        <img src={locationIco} className="locationIco"/>
-                        <div className="bold">
-                          {weather.wind.speed}m/s {weather.wind.deg} Degree
-                        </div>
-                      </div>
-                    </div>
-                  </Col>
-
-                  <Col className="sun">
-                    <p className="line-height">
-                      <span className="bold">Sunrise: </span>
-                      {new Date(
-                        weather.sys.sunrise * 1000
-                      ).toLocaleTimeString()}
-                    </p>
-                    <p className="line-height">
-                      <span className="bold">Sunset: </span>
-                      {new Date(weather.sys.sunset * 1000).toLocaleTimeString()}
-                    </p>
-                  </Col>
-                </Row>
-              </div>
+          <WeatherCard weatherData={weather} />
             </div>
-          </div>
         ))}
         {selectedCity && (
           <Modal
