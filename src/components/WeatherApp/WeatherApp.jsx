@@ -54,40 +54,31 @@ const WeatherApp = () => {
   };
 
   useEffect(() => {
+
+    const fetchDataAndCache = async (cityData) => {
+      const allCachedData = [];
+      for (const city of cityData) {
+        const cachedData = getCachedData(city.CityCode);
+        if (cachedData) {
+          allCachedData.push(...cachedData);
+        } else {
+          const weatherData = await getWeatherData([city.CityCode]);
+          allCachedData.push(...weatherData);
+          cacheData(weatherData, city.CityCode, city.CacheExpiration);
+        }
+      }
+      setWeatherData(allCachedData);
+    };
     const fetchData = async () => {
       try {
         const response = await axios.get("cities.json");
         if (response.status === 200) {
           const cityData = response.data;
           const cityCodes = extractCityCodes(cityData);
-
-          const allCachedData = [];
-          for (const city of cityData) {
-            const cachedData = getCachedData(city.CityCode);
-            if (cachedData) {
-              allCachedData.push(...cachedData);
-            } else {
-              const weatherData = await getWeatherData([city.CityCode]);
-              allCachedData.push(...weatherData);
-              console.log(city.CityCode);
-              cacheData(weatherData, city.CityCode, city.CacheExpiration);
-            }
-          }
-
-          setWeatherData(allCachedData);
+          fetchDataAndCache(cityData);
 
           const interval = setInterval(() => {
-            for (const city of cityData) {
-              const cachedData = localStorage.getItem(
-                `weatherData_${city.CityCode}`
-              );
-              const parsedData = JSON.parse(cachedData);
-              const { timestamp, CacheExpiration } = parsedData;
-              const currentTime = new Date().getTime();
-              if (currentTime - timestamp > CacheExpiration) {
-                fetchAndUpdateWeatherData(city.CityCode, city.CacheExpiration);
-              }
-            }
+            fetchDataAndCache(cityData);
           }, 5000);
 
           return () => {
