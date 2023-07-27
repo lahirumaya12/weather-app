@@ -36,23 +36,6 @@ const WeatherApp = () => {
     day: "numeric",
   })}`;
 
-  const fetchAndUpdateWeatherData = async (cityCode, cacheExpiration) => {
-    try {
-      const latestWeatherData = await getWeatherData([cityCode]);
-      const updatedWeatherData = [...weatherData];
-      const cityIndex = updatedWeatherData.findIndex(
-        (weather) => weather.CityCode === cityCode
-      );
-      if (cityIndex !== -1) {
-        updatedWeatherData[cityIndex] = latestWeatherData[0];
-        setWeatherData(updatedWeatherData);
-      }
-      cacheData(latestWeatherData, cityCode, cacheExpiration);
-    } catch (error) {
-      console.error("Error fetching and updating weather data:", error.message);
-    }
-  };
-
   useEffect(() => {
 
     const fetchDataAndCache = async (cityData) => {
