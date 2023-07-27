@@ -18,8 +18,8 @@ import axios from "axios";
 import { getWeatherData } from "../../RestApi/apiClient";
 import logo from "../../assets/images/logo.png";
 import "./../WeatherApp/style.css";
-import { cacheData } from "../../CacheHandler/CacheHandler";
-import { getCachedData } from "../../CacheHandler/CacheHandler";
+import { cacheData , getCachedData} from "../../CacheHandler/CacheHandler";
+
 
 const WeatherApp = () => {
   const [weatherData, setWeatherData] = useState([]);
@@ -60,10 +60,6 @@ const WeatherApp = () => {
           const cityData = response.data;
           const cityCodes = extractCityCodes(cityData);
 
-          for (let i = 0; i < weatherData.length; i++) {
-            weatherData[i].CityCode = cityCodes[i];
-          }
-
           const allCachedData = [];
           for (const city of cityData) {
             const cachedData = getCachedData(city.CityCode);
@@ -72,6 +68,7 @@ const WeatherApp = () => {
             } else {
               const weatherData = await getWeatherData([city.CityCode]);
               allCachedData.push(...weatherData);
+              console.log(city.CityCode);
               cacheData(weatherData, city.CityCode, city.CacheExpiration);
             }
           }
@@ -119,10 +116,10 @@ const WeatherApp = () => {
     return cityCodes;
   };
 
-  const handleCityClick = async (city) => {
+  const handleCityClick = async (id) => {
     try {
-      console.log(city);
-      const latestWeatherData = await getWeatherData(city);
+      console.log(id);
+      const latestWeatherData = await getWeatherData(id);
       setSelectedCity(latestWeatherData[0]);
       setShowModal(true);
     } catch (error) {
@@ -194,7 +191,7 @@ const WeatherApp = () => {
             href="#"
             className="loactionhandler"
             key={getWeatherData.cityCode}
-            onClick={() => handleCityClick(weather.CityCode)}
+            onClick={() => handleCityClick(weather.id)}
           >
             <div
               className={`weather-item ${getWeatherCardClass(
