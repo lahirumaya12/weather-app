@@ -59,24 +59,24 @@ const WeatherApp = () => {
         if (response.status === 200) {
           const cityData = response.data;
           const cityCodes = extractCityCodes(cityData);
-          const weatherData = await getWeatherData(cityCodes);
 
           for (let i = 0; i < weatherData.length; i++) {
             weatherData[i].CityCode = cityCodes[i];
           }
-          setWeatherData(weatherData);
 
+          const allCachedData = [];
           for (const city of cityData) {
             const cachedData = getCachedData(city.CityCode);
-
             if (cachedData) {
+              allCachedData.push(...cachedData);
             } else {
-              const cityWeatherData = weatherData.filter(
-                (weather) => weather.CityCode === city.CityCode
-              );
-              cacheData(cityWeatherData, city.CityCode, city.CacheExpiration);
+              const weatherData = await getWeatherData([city.CityCode]);
+              allCachedData.push(...weatherData);
+              cacheData(weatherData, city.CityCode, city.CacheExpiration);
             }
           }
+
+          setWeatherData(allCachedData);
 
           const interval = setInterval(() => {
             for (const city of cityData) {
@@ -87,7 +87,6 @@ const WeatherApp = () => {
               const { timestamp, CacheExpiration } = parsedData;
               const currentTime = new Date().getTime();
               if (currentTime - timestamp > CacheExpiration) {
-                const currentTime = new Date().getTime();
                 fetchAndUpdateWeatherData(city.CityCode, city.CacheExpiration);
               }
             }

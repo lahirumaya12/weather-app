@@ -3,13 +3,13 @@
         "CityName": "Colombo",
         "Temp": "33.0",
         "Status": "Clouds",
-        "CacheExpiration": 100000
+        "CacheExpiration": 1000000
     }, {
         "CityCode": "1850147",
         "CityName": "Tokyo",
         "Temp": "8.6",
         "Status": "Clear",
-        "CacheExpiration": 100000
+        "CacheExpiration": 1000000
     }, {
         "CityCode": "2644210",
         "CityName": "Liverpool",
