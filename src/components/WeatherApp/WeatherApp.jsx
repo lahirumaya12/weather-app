@@ -13,12 +13,13 @@ import {
   faCloudShowersWater,
   faCloudSun,
 } from "@fortawesome/free-solid-svg-icons";
-import locationIco from "../../assets/images/location.png"
+import locationIco from "../../assets/images/location.png";
 import axios from "axios";
 import { getWeatherData } from "../../RestApi/apiClient";
-import { CACHE_EXPIRATION } from "../../constants/constants";
 import logo from "../../assets/images/logo.png";
 import "./../WeatherApp/style.css";
+import { cacheData } from "../../CacheHandler/CacheHandler";
+import { getCachedData } from "../../CacheHandler/CacheHandler";
 
 const WeatherApp = () => {
   const [weatherData, setWeatherData] = useState([]);
@@ -34,7 +35,75 @@ const WeatherApp = () => {
     day: "numeric",
   })}`;
 
+  const fetchAndUpdateWeatherData = async (cityCode, cacheExpiration) => {
+    try {
+      const latestWeatherData = await getWeatherData([cityCode]);
+      const updatedWeatherData = [...weatherData];
+      const cityIndex = updatedWeatherData.findIndex(
+        (weather) => weather.CityCode === cityCode
+      );
+      if (cityIndex !== -1) {
+        updatedWeatherData[cityIndex] = latestWeatherData[0];
+        setWeatherData(updatedWeatherData);
+      }
+      cacheData(latestWeatherData, cityCode, cacheExpiration);
+    } catch (error) {
+      console.error("Error fetching and updating weather data:", error.message);
+    }
+  };
+
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("cities.json");
+        if (response.status === 200) {
+          const cityData = response.data;
+          const cityCodes = extractCityCodes(cityData);
+          const weatherData = await getWeatherData(cityCodes);
+
+          for (let i = 0; i < weatherData.length; i++) {
+            weatherData[i].CityCode = cityCodes[i];
+          }
+          setWeatherData(weatherData);
+
+          for (const city of cityData) {
+            const cachedData = getCachedData(city.CityCode);
+
+            if (cachedData) {
+            } else {
+              const cityWeatherData = weatherData.filter(
+                (weather) => weather.CityCode === city.CityCode
+              );
+              cacheData(cityWeatherData, city.CityCode, city.CacheExpiration);
+            }
+          }
+
+          const interval = setInterval(() => {
+            for (const city of cityData) {
+              const cachedData = localStorage.getItem(
+                `weatherData_${city.CityCode}`
+              );
+              const parsedData = JSON.parse(cachedData);
+              const { timestamp, CacheExpiration } = parsedData;
+              const currentTime = new Date().getTime();
+              if (currentTime - timestamp > CacheExpiration) {
+                const currentTime = new Date().getTime();
+                fetchAndUpdateWeatherData(city.CityCode, city.CacheExpiration);
+              }
+            }
+          }, 5000);
+
+          return () => {
+            clearInterval(interval);
+          };
+        } else if (response.status === 304) {
+          // ...
+        }
+      } catch (error) {
+        console.log(`Error fetching city data: ${error.message}`);
+      }
+    };
+
     const cachedData = getCachedData();
     if (cachedData) {
       setWeatherData(cachedData);
@@ -42,24 +111,6 @@ const WeatherApp = () => {
       fetchData();
     }
   }, []);
-
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("cities.json");
-      if (response.status === 200) {
-        const cityCodes = extractCityCodes(response.data);
-        const weatherData = await getWeatherData(cityCodes);
-        setWeatherData(weatherData);
-        cacheData(weatherData);
-      } else if (response.status === 304) {
-        // Use cached data
-        console.log("Using cached data");
-        // Process the cached data as needed
-      }
-    } catch (error) {
-      console.log(`Error fetching city data: ${error.message}`);
-    }
-  };
 
   const extractCityCodes = (cityData) => {
     const cityCodes = [];
@@ -69,38 +120,12 @@ const WeatherApp = () => {
     return cityCodes;
   };
 
-  const cacheData = (data) => {
-    const timestamp = new Date().getTime();
-    const cachedData = {
-      timestamp,
-      data,
-    };
-    localStorage.setItem("weatherData", JSON.stringify(cachedData));
-  };
-
-  const getCachedData = () => {
-    const cachedData = localStorage.getItem("weatherData");
-    if (cachedData) {
-      const parsedData = JSON.parse(cachedData);
-      const { timestamp, data } = parsedData;
-      const currentTime = new Date().getTime();
-      if (currentTime - timestamp <= CACHE_EXPIRATION) {
-        return data;
-      } else {
-        localStorage.removeItem("weatherData");
-      }
-    }
-    return null;
-  };
-
   const handleCityClick = async (city) => {
     try {
-      setSelectedCity(city);
+      console.log(city);
+      const latestWeatherData = await getWeatherData(city);
+      setSelectedCity(latestWeatherData[0]);
       setShowModal(true);
-      // Fetch weather data for the selected city
-      // const weatherData = await getWeatherData(city.CityCode);
-      // Update the state with weatherData
-      setWeatherData(weatherData);
     } catch (error) {
       console.error("Error fetching weather data:", error.message);
     }
@@ -165,12 +190,12 @@ const WeatherApp = () => {
         </Row>
       </Container>
       <div className="weather-list">
-        {weatherData.map((weather) => (
+        {weatherData && weatherData.map((weather) => (
           <div
             href="#"
             className="loactionhandler"
             key={getWeatherData.cityCode}
-            onClick={() => handleCityClick(weather)}
+            onClick={() => handleCityClick(weather.CityCode)}
           >
             <div
               className={`weather-item ${getWeatherCardClass(
