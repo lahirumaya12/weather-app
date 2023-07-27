@@ -165,7 +165,7 @@ const WeatherApp = () => {
           <div
             href="#"
             className="loactionhandler"
-            key={getWeatherData.cityCode}
+            key={weather.id}
             onClick={() => handleCityClick(weather.id)}
           >
           <WeatherCard weatherData={weather} />
